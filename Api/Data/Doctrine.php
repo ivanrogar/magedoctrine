@@ -118,6 +118,8 @@ class Doctrine implements ManagerInterface
             throw new LocalizedException(__('Expected PDO connection, got ' . get_class($connection)));
         }
 
+        $this->initDoctrineClassLoaders();
+
         $isDev = $this->state->getMode() === State::MODE_DEVELOPER;
 
         $cache = ($isDev)
@@ -216,5 +218,14 @@ class Doctrine implements ManagerInterface
         }
 
         return $paths;
+    }
+
+    /**
+     * Temporary fix for gedmo
+     */
+    private function initDoctrineClassLoaders()
+    {
+        \Doctrine\Common\Annotations\AnnotationRegistry::registerFile(BP
+            . '/vendor/gedmo/doctrine-extensions/lib/Gedmo/Mapping/Annotation/Timestampable.php');
     }
 }

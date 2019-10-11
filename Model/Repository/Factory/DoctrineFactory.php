@@ -64,6 +64,6 @@ class DoctrineFactory implements RepositoryFactory
         $repositoryClassName = $metadata->customRepositoryClassName
             ?: $entityManager->getConfiguration()->getDefaultRepositoryClassName();
 
-        return $this->container->create($repositoryClassName, [$entityManager, $metadata]);
+        return $this->container->create($repositoryClassName, ['em' => $entityManager, 'class' => $metadata]);
     }
 }

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace JohnRogar\MageDoctrine\Console\Command;
 
-use Doctrine\ORM\Tools\SchemaTool;
 use JohnRogar\MageDoctrine\Api\ManagerInterface;
+use Doctrine\ORM\Tools\SchemaTool;
 use Magento\Framework\App\Area;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\App\State;
@@ -68,6 +68,11 @@ class DropSchemaCommand extends Command
         }
 
         $style = new SymfonyStyle($input, $output);
+
+        if ($this->state->getMode() === State::MODE_PRODUCTION) {
+            $style->error('You cannot drop schema in production mode');
+            return -1;
+        }
 
         if (!$input->getOption('force')) {
             $style->error('You must explicitly include the force parameter!');
