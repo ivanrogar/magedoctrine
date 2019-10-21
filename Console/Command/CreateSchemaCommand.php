@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace JohnRogar\MageDoctrine\Console\Command;
 
-use Doctrine\ORM\Tools\SchemaTool;
+use JohnRogar\MageDoctrine\Model\SchemaTool;
 use JohnRogar\MageDoctrine\Api\ManagerInterface;
 use Magento\Framework\App\Area;
 use Magento\Framework\Exception\LocalizedException;
