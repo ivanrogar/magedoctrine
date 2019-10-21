@@ -62,7 +62,13 @@ class SchemaTool extends \Doctrine\ORM\Tools\SchemaTool
         $tables = [];
         foreach ($classes as $class) {
             if (isset($class->table) && isset($class->table["name"])) {
-                $tables[] = $sm->listTableDetails($class->table["name"]);
+                $details = $sm->listTableDetails($class->table["name"]);
+
+                // new tables won't be created if we include a table definition without columns
+                // e.g. it doesn't exist yet
+                if ($details->getColumns() && count($details->getColumns())) {
+                    $tables[] = $details;
+                }
             }
         }
 

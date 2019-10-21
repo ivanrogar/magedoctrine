@@ -99,6 +99,7 @@ class UpdateSchemaCommand extends Command
 
             foreach ($sqls as $sql) {
                 $style->text(sprintf('    %s;', $sql));
+                $style->newLine();
             }
 
             return 0;
