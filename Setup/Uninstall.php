@@ -4,7 +4,6 @@ declare(strict_types=0);
 
 namespace JohnRogar\MageDoctrine\Setup;
 
-use Doctrine\ORM\Tools\ToolsException;
 use JohnRogar\MageDoctrine\Api\ManagerInterfaceFactory;
 use JohnRogar\MageDoctrine\Model\SchemaTool;
 use Magento\Framework\App\State;
@@ -38,7 +37,6 @@ class Uninstall implements UninstallInterface
 
     /**
      * @inheritDoc
-     * @throws ToolsException
      */
     public function uninstall(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
