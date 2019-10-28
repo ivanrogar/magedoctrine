@@ -27,7 +27,13 @@
                 <item name="johnrogar_doctrine_schema_update" xsi:type="object">
                     JohnRogar\MageDoctrine\Console\Command\UpdateSchemaCommand
                 </item>
+                <item name="johnrogar_doctrine_schema_validate" xsi:type="object">
+                    JohnRogar\MageDoctrine\Console\Command\ValidateSchemaCommand
+                </item>
             </argument>
         </arguments>
     </type>
+
+    <!--<type name="JohnRogar\MageDoctrine\Api\ManagerInterface" shared="true"/>
+    <type name="JohnRogar\MageDoctrine\Api\Data\Doctrine" shared="true"/>-->
 </config>

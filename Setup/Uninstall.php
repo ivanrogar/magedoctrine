@@ -8,7 +8,7 @@ use JohnRogar\MageDoctrine\Api\ManagerInterfaceFactory;
 use JohnRogar\MageDoctrine\Model\SchemaTool;
 use Magento\Framework\App\State;
 use Magento\Framework\Setup\ModuleContextInterface;
-use Magento\Framework\Setup\ModuleDataSetupInterface;
+use Magento\Framework\Setup\SchemaSetupInterface;
 use Magento\Framework\Setup\UninstallInterface;
 
 /**
@@ -38,7 +38,7 @@ class Uninstall implements UninstallInterface
     /**
      * @inheritDoc
      */
-    public function uninstall(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
+    public function uninstall(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
         echo ' -> SCHEMA DROP ... ';
 
