@@ -59,17 +59,22 @@ class Doctrine implements ManagerInterface
 
     private $registrar;
 
+    private $autoGenerateProxyClasses = true;
+
     /**
      * Doctrine constructor.
      * @param EventManagerInterface $eventManager
      * @param State $state
-     * @param $repositoryFactory
+     * @param DoctrineFactory $repositoryFactory
      * @param DoctrineEventManagerInterface $doctrineEventManager
      * @param ResourceConnection $resourceConnection
      * @param ComponentRegistrarInterface $registrar
+     * @param bool $autoGenerateProxyClasses
      * @param array $connectionConfiguration
      * @param array $modules
      * @param Configuration|null $ormConfiguration
+     * @SuppressWarnings(BooleanArgumentFlag)
+     * @SuppressWarnings(ExcessiveParameterList)
      */
     public function __construct(
         EventManagerInterface $eventManager,
@@ -78,6 +83,7 @@ class Doctrine implements ManagerInterface
         DoctrineEventManagerInterface $doctrineEventManager,
         ResourceConnection $resourceConnection,
         ComponentRegistrarInterface $registrar,
+        $autoGenerateProxyClasses = true,
         array $connectionConfiguration = [],
         array $modules = [],
         ?Configuration $ormConfiguration = null
@@ -88,6 +94,7 @@ class Doctrine implements ManagerInterface
         $this->doctrineEventManager = $doctrineEventManager;
         $this->resourceConnection = $resourceConnection;
         $this->registrar = $registrar;
+        $this->autoGenerateProxyClasses = $autoGenerateProxyClasses;
         $this->connectionConfiguration = $connectionConfiguration;
         $this->modules = $modules;
         $this->ormConfiguration = $ormConfiguration;
@@ -150,7 +157,7 @@ class Doctrine implements ManagerInterface
 
             $configuration->setProxyDir(BP . '/var/doctrine_proxies/');
 
-            $configuration->setAutoGenerateProxyClasses($isDev);
+            $configuration->setAutoGenerateProxyClasses($this->autoGenerateProxyClasses);
 
             $configuration->setProxyNamespace('JohnRogar\DoctrineProxies');
 
