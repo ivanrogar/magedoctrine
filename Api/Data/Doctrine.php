@@ -6,6 +6,7 @@ namespace JohnRogar\MageDoctrine\Api\Data;
 
 use JohnRogar\MageDoctrine\Api\ManagerInterface;
 use JohnRogar\MageDoctrine\Api\EventManagerInterface as DoctrineEventManagerInterface;
+use JohnRogar\MageDoctrine\Model\Repository\Factory\DoctrineFactory;
 use Magento\Framework\App\State;
 use Magento\Framework\Component\ComponentRegistrar;
 use Magento\Framework\Component\ComponentRegistrarInterface;
@@ -18,7 +19,6 @@ use Doctrine\ORM\Configuration;
 use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Types\Type;
-use Doctrine\ORM\Repository\RepositoryFactory;
 use Magento\Framework\Exception\LocalizedException;
 
 /**
@@ -63,7 +63,7 @@ class Doctrine implements ManagerInterface
      * Doctrine constructor.
      * @param EventManagerInterface $eventManager
      * @param State $state
-     * @param RepositoryFactory $repositoryFactory
+     * @param $repositoryFactory
      * @param DoctrineEventManagerInterface $doctrineEventManager
      * @param ResourceConnection $resourceConnection
      * @param ComponentRegistrarInterface $registrar
@@ -74,7 +74,7 @@ class Doctrine implements ManagerInterface
     public function __construct(
         EventManagerInterface $eventManager,
         State $state,
-        RepositoryFactory $repositoryFactory,
+        DoctrineFactory $repositoryFactory,
         DoctrineEventManagerInterface $doctrineEventManager,
         ResourceConnection $resourceConnection,
         ComponentRegistrarInterface $registrar,

@@ -3,7 +3,6 @@
 
     <preference for="JohnRogar\MageDoctrine\Api\ManagerInterface" type="JohnRogar\MageDoctrine\Api\Data\Doctrine"/>
     <preference for="JohnRogar\MageDoctrine\Api\EventManagerInterface" type="JohnRogar\MageDoctrine\Model\EventManager\DoctrineEventManager"/>
-    <preference for="Doctrine\ORM\Repository\RepositoryFactory" type="JohnRogar\MageDoctrine\Model\Repository\Factory\DoctrineFactory"/>
 
     <type name="JohnRogar\MageDoctrine\Model\EventManager\DoctrineEventManager">
         <arguments>
@@ -33,7 +32,4 @@
             </argument>
         </arguments>
     </type>
-
-    <!--<type name="JohnRogar\MageDoctrine\Api\ManagerInterface" shared="true"/>
-    <type name="JohnRogar\MageDoctrine\Api\Data\Doctrine" shared="true"/>-->
 </config>
